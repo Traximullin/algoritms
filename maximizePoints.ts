@@ -25,7 +25,6 @@ const maximizePoints =  (team1: team, team2: team): number =>  {
     return count
 }
 
-
 // clever 
 // function maximizePoints(team1, team2) {
 //     var t1=team1.slice().sort((a,b)=>a-b);
