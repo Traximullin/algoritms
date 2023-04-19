@@ -38,21 +38,20 @@ const MORSE_CODE = {
     "|":" "
 };
 
-
 const decodeMorse = (morseCode: string) => {
-    const test = morseCode.split(" ")
+    const test = morseCode.trim().split(" ")
     let str = ""
 
     test.forEach(elem => {
-       if(MORSE_CODE[elem]) {
-        str += MORSE_CODE[elem]
-       } else {
-        str += " "
-       }
+        if(MORSE_CODE[elem]) {
+            str += MORSE_CODE[elem]
+        }
     })
 
-    console.log(str)
+    return str
 }
 
-console.log(decodeMorse('.... . -.--   .--- ..- -.. .'))
+// console.log(decodeMorse('   .... . -.--   '))
+console.log(decodeMorse(".... . -.--   .--- ..- -.. ."))
+
 
