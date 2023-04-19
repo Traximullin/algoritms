@@ -11,8 +11,6 @@
 //   }
 // }
 
-// console.log(factorial(5))
-
 let list = {
   value: 1,
   next: {
@@ -32,6 +30,11 @@ let list = {
 //   console.log(obj.value)
 //   if(obj.next) {
 //     printListCycle(obj.next)
+// const factorial = (num) => {
+//   if(num != 1) {
+//     return num * factorial(num -1)
+//   } else {
+//     return 1
 //   }
 // }
 
