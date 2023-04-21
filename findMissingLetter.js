@@ -1,13 +1,13 @@
-const array = ['a','b','c','d','f']
-
 function findMissingLetter(array) {
-    array.forEach((element,index) => {
-        if(index !== 0 && index !== array.length - 1) {
-            if(array[index].charCodeAt() + 1 !== array[index + 1].charCodeAt()) {
-                return String.fromCharCode(array[index].charCodeAt() + 1)
-            }    
+    const data = array.find((element, index, self) => {
+        if(index === array.length - 1) {
+            return "" 
         }
-    });
-}
 
-findMissingLetter(array)
+        if(self[index].charCodeAt() + 1 !== self[index + 1].charCodeAt()) {
+            return element
+        }
+    })
+
+    return String.fromCharCode(data.charCodeAt() + 1)
+}
