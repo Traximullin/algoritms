@@ -13,4 +13,4 @@ const inPrime = (num: number): boolean => {
     return true
 }
 
-inPrime(11111111)
+console.log(inPrime(11111111))
