@@ -1,13 +1,7 @@
 {
-    const reverse = a => {
-        const reversed = []
+    reverse=a=>a.map(a.pop,[...a]);
 
-        for(let i = a.length - 1; i >= 0; i--) {
-
-            reversed.push(a[i])
-        }
-        return reverse
-    }
-
+    // var reverse=a=>a.sort(_ => -1)
+    
     console.log(reverse([1,2,3]))
 }
