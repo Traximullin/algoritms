@@ -23,34 +23,51 @@
 
     const helper = (nums: number): number[] => {
         const result: string[] = []
-
-        const test = 
-            nums
+        
+        const number_array: number[] = []
+        console.log(nums)
+        nums
             .toString()
             .split("")
-            .map((elem,index,self) => 10 ** (self.length - index - 1) * +elem)
+            .forEach((elem,index,self) => {
+                if(elem == "0") {
+                    return 
+                }
+            
+                const number = 10 ** (self.length - index - 1) * +elem;
+                console.log(elem)
+                if(ROMAN.hasOwnProperty(number)) {
+                    number_array.push(number)
+                }else {
+                    const find = numberSearch(number)
+                    console.log(find)
+                    console.log(number)
+                    number_array.push(Math.abs(find - number), +find)
+                }
+            })
         
-        
+        // test.forEach(elem => {
+        //     if(ROMAN.hasOwnProperty(elem)) {
+        //         result.push(ROMAN[elem])
+        //     }else {
+        //         const find = numberSearch(elem)
 
-        test.forEach(elem => {
-            if(ROMAN.hasOwnProperty(elem)) {
-                result.push(ROMAN[elem])
-            }else {
-                const find = numberSearch(elem)
+        //         result.push(ROMAN[find - elem], ROMAN[find])
+        //     }
+        // })
 
-                result.push(ROMAN[find - elem], ROMAN[find])
-            }
-        })
-
-        console.log(result)
-        return [1]
+        return number_array
     }
 
     const intToRoman = function(num: number) {
         const array = helper(num)
+    
+        return array.map(elem => ROMAN[elem])
     }
 
     // console.log(intToRoman(3))
     console.log(intToRoman(1994))
+    console.log(intToRoman(999))
+    console.log(intToRoman(2000))
 
 }
