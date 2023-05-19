@@ -65,7 +65,6 @@
         return array.map(elem => ROMAN[elem])
     }
 
-    // console.log(intToRoman(3))
     console.log(intToRoman(1994))
     console.log(intToRoman(999))
     console.log(intToRoman(2000))
