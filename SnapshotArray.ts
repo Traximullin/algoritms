@@ -1,5 +1,5 @@
 {
-    var SnapshotArray = function(length) {
+    const SnapshotArray = function(length) {
         this.snap_id = 0
         this.snap_shots = {}
     };
