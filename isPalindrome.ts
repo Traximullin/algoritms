@@ -32,7 +32,4 @@
       
     return true;
     };
-      
-
-    console.log(isPalindrome("0R"))
 }
