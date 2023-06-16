@@ -22,20 +22,24 @@
         }
         
         divide(value) {
+            if (value === 0) {
+                throw new Error("Division by zero is not allowed");
+            }
             this.number /= value
             return this
         }
         
         power(value) {
-            this.number *= value
+            this.number **= value
             return this
         }
+
         getResult() {
             return this.number        
         }
     }
 
-    const calc = new Calculator(10)
+    const calc = new Calculator(20)
 
-    console.log(calc.add(5).subtract(7).getResult())
+    console.log(calc.divide(0).getResult())
 }
