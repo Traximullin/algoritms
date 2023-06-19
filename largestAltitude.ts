@@ -1,17 +1,14 @@
 {
-
-    const largestAltitude = function(gain) {
-        let altitude = 0;
-        let highest = 0;
+    function largestAltitude(gain: number[]): number {
+        let alt = 0
+        let maxPoint = 0
 
         for(const way of gain) {
-            altitude += way
-            highest = Math.max(highest, altitude)
+            alt += way
+            maxPoint = Math.max(maxPoint,alt)
         }
 
-        return highest
+        return maxPoint
     };
-
-
     console.log(largestAltitude([-5,1,5,0,-7]))
 }

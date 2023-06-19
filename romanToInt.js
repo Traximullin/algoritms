@@ -28,7 +28,6 @@
 
         return result.reduce((prev,curr) => prev + curr, 0)
     };
-     
     console.log(romanToInt("III"))
     console.log(romanToInt("LVIII"))
     console.log(romanToInt("MCMXCIV"))
