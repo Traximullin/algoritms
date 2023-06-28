@@ -1,8 +1,12 @@
 {
+    //! TODO
     const helper = (symb) => {
+        // if(!isNaN(symb)) {
+        //     return true
+        // }
         return symb.toLowerCase() === symb.toUpperCase();
     };
-      
+
     const isPalindrome = function(str) {
 
     let start = 0;
@@ -32,4 +36,6 @@
       
     return true;
     };
+
+    console.log(isPalindrome("race a car"))
 }
