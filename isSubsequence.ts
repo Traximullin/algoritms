@@ -5,17 +5,36 @@
     */
 
     const isSubsequence = function(s, t) {
+        let result = ""
         let currentSymb = 0
 
-        while(currentSymb < s.length) {
-            if(!t.includes(s[currentSymb])) {
-                return false
+        for(let symb of t) {
+            if(result.length === s.length) {
+                break
             }
-            currentSymb++
-        }
+            if(s.includes(symb)) {
+                result += symb
+                
+                if(result[currentSymb] !== s[currentSymb]) {
+                    result = ""
+                }
 
-        return true
+                currentSymb++
+
+            }
+        }
+        return result === s
+        // let currentSymb = 0
+
+        // while(currentSymb < s.length) {
+        //     if(!t.includes(s[currentSymb])) {
+        //         return false
+        //     }
+        //     currentSymb++
+        // }
+
+        // return true
     }
 
-    console.log(isSubsequence("abc", "ahbgdc"))
+    console.log(isSubsequence("ab", "baab"))
 }
