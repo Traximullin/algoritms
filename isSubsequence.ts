@@ -21,7 +21,6 @@
 
                 currentSymb++
 
-
             }
         }
         return result === s
