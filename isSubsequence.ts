@@ -5,9 +5,9 @@
     */
 
     const isSubsequence = function(s, t) {
+        
         let result = ""
         let currentSymb = 0
-
         for(let symb of t) {
             if(result.length === s.length) {
                 break
@@ -23,7 +23,26 @@
 
             }
         }
-        return result === s
+
+        // let result = ""
+        // let currentSymb = 0
+
+        // for(let symb of t) {
+        //     if(result.length === s.length) {
+        //         break
+        //     }
+        //     if(s.includes(symb)) {
+        //         result += symb
+                
+        //         if(result[currentSymb] !== s[currentSymb]) {
+        //             result = ""
+        //         }
+
+        //         currentSymb++
+
+        //     }
+        // }
+        // return result === s
         // let currentSymb = 0
 
         // while(currentSymb < s.length) {
