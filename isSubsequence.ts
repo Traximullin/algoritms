@@ -1,58 +1,30 @@
 {
-    /*
-        !TODO
-        https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=top-interview-150
-    */
-
     const isSubsequence = function(s, t) {
-        
-        let result = ""
-        let currentSymb = 0
-        for(let symb of t) {
-            if(result.length === s.length) {
-                break
-            }
-            if(s.includes(symb)) {
-                result += symb
-                
-                if(result[currentSymb] !== s[currentSymb]) {
-                    result = ""
-                }
+        let i = 0, j = 0
 
-                currentSymb++
-
+        while(i < s.length && j < t.length) {
+            if(s[i] === t[j]) {
+                i++
             }
+            j++
         }
 
-        // let result = ""
-        // let currentSymb = 0
+        return i === s.length
 
-        // for(let symb of t) {
+        // let result = ""
+        // let count = 0
+
+        // for(let i = 0; i < t.length; i++) {
         //     if(result.length === s.length) {
         //         break
         //     }
-        //     if(s.includes(symb)) {
-        //         result += symb
-                
-        //         if(result[currentSymb] !== s[currentSymb]) {
-        //             result = ""
-        //         }
 
-        //         currentSymb++
-
+        //     if(s[count] === t[i]) {
+        //         count++
+        //         result += t[i]
         //     }
         // }
-        // return result === s
-        // let currentSymb = 0
-
-        // while(currentSymb < s.length) {
-        //     if(!t.includes(s[currentSymb])) {
-        //         return false
-        //     }
-        //     currentSymb++
-        // }
-
-        // return true
+        // return s === result
     }
 
     console.log(isSubsequence("ab", "baab"))
