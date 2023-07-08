@@ -4,38 +4,20 @@
         if(strs.length === 0) {
             return ""
         }
-        let result = ""
-
-        let first = strs[0]
         
-        for(let i = 0; i < first.length; i++) {
-            console.log(first[i])
+        let prefix = strs[0]
 
-            for(let j = 1; j < strs.length; j++) {
-                console.log(strs[j][i])
-                if(first[i] === strs[j][i] && !result.includes(first[i])) {
-                    console.log(first[i])
-                    result += first[i]
-                } else {
-                    console.log(strs[j][i])
-                }
+        for(let i = 1; i < strs.length; i++) {
+            while(strs[i].indexOf(prefix) !== 0) {
+                
+                prefix = prefix.substring(0, prefix.length - 1)
+                
+                if(prefix === "") return ""
+        
             }
         }
 
-        console.log(result)
-        // let result = strs[0][0]
-
-        // for(let symb of strs) {
-        //     if(symb.indexOf(result) === result.length - 1) {
-        //         result += symb[result.length]
-        //         continue
-        //     }
-            
-        //     break
-        // }
-
-        // console.log(result)
-
+        return prefix
     };
 
     console.log(longestCommonPrefix(["flower","flow","flight"]))
