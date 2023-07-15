@@ -13,14 +13,32 @@
      * }
      */
 
+    function TreeNode(val, left, right) {
+         this.val = (val===undefined ? 0 : val)
+         this.left = (left===undefined ? null : left)
+         this.right = (right===undefined ? null : right)
+    }
+
     const inorderTraversal = function(root) {
-        const result = []
+        const stack = []
+        const res = []
 
-        const test = () => {
-
+        while(root || stack.length) {
+            if(root) {
+                stack.push(root)
+                root = root.left
+            } else {
+                root = stack.pop()
+                res.push(root.val)
+                root = root.right
+            }
         }
 
-        return result
+        return res
     };
 
+    const node2 = new TreeNode(2,3,null)
+    const node1 = new TreeNode(1,null, node2)
+
+    console.log(inorderTraversal(node1))
 }
