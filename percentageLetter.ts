@@ -1,7 +1,13 @@
 {
-    var percentageLetter = function(s, letter) {
-    
+    const percentageLetter = function(s, letter) {
+        let count = 0
+        for(let symb of s) {
+            if(symb === letter) 
+                count++
+        }
+
+        return ~~(count / s.length * 100)
     };
 
-    console.log(percentageLetter("foobar", "o"))
+    console.log(percentageLetter("sgawtb", "s"))
 }
