@@ -1,5 +1,6 @@
 {
     var mySqrt = function(x) {
+        // return ~~Math.sqrt(x)
         let sqrt = 1,
             result = 0
         
