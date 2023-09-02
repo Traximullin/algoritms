@@ -1,17 +1,16 @@
 {
-    // !TODO 
-    // https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/description/
     const countPairs = function(nums, target) {
-        let result = 0;
-        nums.sort((a,b) => a - b)
-        console.log(nums)
-        for(let i = 1; i < nums.length; i++) {
-            if(nums[0] + nums[i] < target) {
-                result++
+        let count = 0;
+
+        for(let i = 0; i < nums.length; i++) {
+            for(let j = i + 1; j < nums.length; j++) {
+                if(i < j && nums[i] + nums[j] < target) {
+                    count++
+                }
             }
         }
 
-        return result
+        return count
     };
 
     console.log(countPairs([-6,2,5,-2,-7,-1,3], 2))
