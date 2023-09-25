@@ -1,16 +1,16 @@
 {
     const countAsterisks = function(s) {
-        let asterisks = 0
+        let count = 0
 
         s.split('|').forEach((sub, i) => {
           
             if (i % 2 === 0) {
-                asterisks += sub.split('').filter((c) => c === '*').length
+                count += sub.split('').filter((c) => c === '*').length
             }
 
         });
         
-        return asterisks;
+        return count;
     };
 
     console.log(countAsterisks("l|*e*et|c**o|*de|"))
