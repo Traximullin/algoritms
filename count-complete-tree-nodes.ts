@@ -1,20 +1,16 @@
 {
     const countNodes = function(root) {
         let count = 0
-        
-        if(root) {
-            return count
-        }
-
+        root && traverse(root)
+   
+        return count
+    
         function traverse(node) {
             count += 1
 
-            traverse(node.left)
-            traverse(node.right)
-        };
+            node.left && traverse(node.left)
+            node.right && traverse(node.right)
+        }
 
-        traverse(root)
-        
-        return count
-    };
+    }
 }
