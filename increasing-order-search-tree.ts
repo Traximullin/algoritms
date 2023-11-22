@@ -3,7 +3,7 @@
 
     const increasingBST = function(root) {
         let tree = new TreeNode(null);
-    
+
         let prev = tree;
 
         const dfs = (node) => {
