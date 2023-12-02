@@ -2,6 +2,7 @@
     const removeOuterParentheses = function (s) {
         let openCount = 0;
         let output = "";
+
         for (let i = 0; i < s.length; i++) {
             if (s[i] === "(") {
                 if (openCount) output += s[i];
@@ -12,6 +13,7 @@
                 if (openCount) output += s[i];
             }
         }
+        
         return output;
     };
 }
