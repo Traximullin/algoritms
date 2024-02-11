@@ -13,7 +13,6 @@
         return false
     }
 
-
     console.log(solution('a','b','c','a'))
     console.log(solution(1,2,3));
     console.log(solution(solution(1,2,3,'a','b')))
