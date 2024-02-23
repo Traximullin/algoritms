@@ -4,7 +4,7 @@
         
         for (let i = 0; i < nums.length; i++) {
             const map = new Set([nums[i]]);
-        
+            console.log(map)
             for (let j = i; j < nums.length; j++) {
                 map.add(nums[j]);
 
@@ -16,5 +16,5 @@
         return result;
     };
 
-    console.log(sumCounts[1,2,1])
+    console.log(sumCounts([1,2,1]))
 }
