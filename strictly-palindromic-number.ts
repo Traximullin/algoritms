@@ -32,4 +32,5 @@
     };
 
     console.log(isStrictlyPalindromic(9))
+    console.log(isStrictlyPalindromic(2))
 }
