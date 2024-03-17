@@ -13,4 +13,5 @@
     };
 
     console.log(sumOfEncryptedInt([10,21,31]))
+    console.log(sumOfEncryptedInt([10,21,34]))
 }
