@@ -4,9 +4,17 @@
         const max = Math.max(...nums);
         let max_index = -1;
 
-        for (const num of nums) {
+        for (let i = 0; i < nums.length; i++) {
+            const num = nums[i]
+            
+            if (num === max) {
+                max_index = i
+            }
+
+            if (num < )
 
         }
+
 
         return max_index
     };
