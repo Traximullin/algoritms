@@ -1,29 +1,21 @@
 {
     function digitSum(s: string, k: number): string {
-        const getSum = (str: string) => {
-
-            return str.split("").reduce((prev, next) => prev + Number(next), 0).toString();
+        if (s.length <= k) return s;
+      
+        const groups: string[] = [];
+      
+        for (let i = 0; i < s.length; i += k) {
+          groups.push(s.slice(i, k + i));
         }
-
-        const helper = (str: string) => {
-            const result: string[] = [];
-
-            for (let i = 0; i < str.length; i += k) {
-                result.push(str.slice(i, i + k))
-            }
-            
-            return result.reduce((prev, next) => {
-                return prev += getSum(next)
-            }, '')
-        }
-
-        while (s.length > k) {
-            s = helper(s)
-            console.log(s)
-        }
-
-        return s
-    };
+      
+        const sum: number[] = groups.map((item) =>
+          item.split("").reduce((sum, cur) => sum + +cur, 0)
+        );
+      
+        const res = sum.reduce((str, cur) => (str += String(cur)), "");
+      
+        return digitSum(res, k);
+    } 
 
 
     console.log(digitSum('11111222223', 3))
