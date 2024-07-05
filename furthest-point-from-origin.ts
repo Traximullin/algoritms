@@ -24,7 +24,7 @@
 
         }
 
-        return c;
+        return Math.abs(c);
     };
 
     console.log(furthestDistanceFromOrigin('L_RL__R'))
