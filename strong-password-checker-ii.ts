@@ -1,59 +1,40 @@
 {
-    const checkSpecial = (str: string) => {
-        return str.toLowerCase() === str.toUpperCase()
-    }
-
-    const checkNumber = (str: string) => {
-        return !isNaN(+str)
-    }
-    // TODO
     function strongPasswordCheckerII(password: string): boolean {
         if (password.length < 8) {
             return false
         }
 
+        const specials = new Set('!@#$%^&*()-+');
+
         const rules = {
-            'one_string': false,
+            'one_lower': false,
             'one_uppercase': false,
             'one_number': false,
             'one_special': false,
         }
 
-        let start = 0,
-            end = password.length - 1;
-
-        while (start < end) {
-            if (password[start] === password[end]) {
+        for (let i = 0; i < password.length; i++) {
+            if (password[i] === password[i + 1])
                 return false
-            }
 
-            if (password[start] === password[start].toUpperCase() || password[end] === password[end].toUpperCase()) {
+            const value_code = password.charCodeAt(i);
+
+            if (value_code >= 65 && value_code <= 90) 
                 rules.one_uppercase = true
-                rules.one_string = true
-            }
 
-            if (checkSpecial(password[start]) || checkSpecial(password[end])) {
+            if (value_code >= 97 && value_code <= 122)
+                rules.one_lower = true
 
-                if(checkNumber(password[start]) || checkNumber(password[end])) {
-                    rules.one_number = true
-                } 
+            if (value_code >= 48 && value_code <= 57)
+                rules.one_number = true
 
-                if (!checkNumber(password[end]) || !checkNumber(password[start])) {
-                    rules.one_special = true
-                }
+            if (specials.has(password[i])) 
+                rules.one_special = true
 
-            }
-
-            if (!rules.one_string) {
-                rules.one_string = true
-            }
-            
-            start++ 
-            end--
         }
-
+        
         return Object.values(rules).every(Boolean)
     };
 
-    console.log(strongPasswordCheckerII("Aa1a1a1!"))
+    console.log(strongPasswordCheckerII("&3@396+&532#1)5^*^*56$269)(-54(3)7&)@1^)8)(@*@23#-%3189)45+6&8%0756!6+!+6"))
 }
