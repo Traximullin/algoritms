@@ -1,27 +1,20 @@
 {
-    // todo
     function minAddToMakeValid(s: string): number {
-        const stack: string[] = [];
+        let open, c;
+        open = c = 0;
 
         for (const char of s) {
             if (char === "(") 
-                stack.push(char) 
-            
-            if (char === ")" && stack.length > 0) {
-                stack.pop();
-            }
-            
-            if (char === ")" && stack.length === 0) {
-                console.log('!')
-                stack.push(")")
-            }
-
+                open += 1;
+            else if (char === ')' && open > 0) 
+                open -= 1;
+            else 
+                c += 1;
 
         }
 
-        console.log(stack)
         
-        return stack.length
+        return open + c
     };
 
     console.log(minAddToMakeValid("()))(("))
