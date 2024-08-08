@@ -14,7 +14,6 @@
 
         return result
     };
-
     console.log(addSpaces('LeetcodeHelpsMeLearn', [8,13,15]))
 
 }
