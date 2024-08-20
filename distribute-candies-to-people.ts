@@ -16,8 +16,8 @@
         return result
     };
 
-    console.log(distributeCandies(10, 3))
     console.log(distributeCandies(7, 4))
+    console.log(distributeCandies(10, 3))
 
 
     // function distributeCandies(candies: number, num_people: number): number[] {
