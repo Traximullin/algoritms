@@ -1,14 +1,22 @@
 {
     function gcdOfStrings(str1: string, str2: string): string {
-        for (let i = 1; i < str1.length; i++) {
-            const str = str1.slice(0, i);
+        if (str1 === str2) {
+            return str1;
+        }
+        const max_str = str1.length > str2.length ? str1 : str2;
 
+        let str_replace = "";
+
+        for (let i = 1; i < max_str.length; i++) {
+            const str = max_str.slice(0, i);
+            
             if (str2.replaceAll(str, '') === '' && str1.replaceAll(str, '') === '') 
-                return str
+                str_replace = str;
         }
 
-        return ''
+        return str_replace;
     };
 
-    console.log(gcdOfStrings('ABCABC', 'ABC'))
+    console.log(gcdOfStrings("A", "AA"))
+
 }
