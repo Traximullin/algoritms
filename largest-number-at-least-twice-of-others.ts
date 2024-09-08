@@ -2,21 +2,24 @@
     // todo 
     function dominantIndex(nums: number[]): number {
         const max = Math.max(...nums);
-        let max_index = -1;
+        const diff = max / 2;
+        let search;
 
         for (let i = 0; i < nums.length; i++) {
-            const num = nums[i]
-            
+            const num = nums[i];
+
             if (num === max) {
-                max_index = i
+                search = i;
+                continue;
             }
 
-            if (num < )
-
+            if (diff < num) {
+                return -1;
+            }
         }
 
+        return search;
 
-        return max_index
     };
 
     console.log(dominantIndex([3,6,1,0]))
