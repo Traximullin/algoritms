@@ -1,46 +1,60 @@
 {
     class FreqStack {
-        private hash = new Map();
-        private test = new Map();
-        private counter = 0;
+        stack = new Map();
+        // приоритетная очередь
+        priority_queue: number[];
 
         constructor() {
-
+            this.priority_queue = [];
         }
-    
-        push(val: number): void {
-            const new_value = (this.hash.get(val) || 0) + 1
-        
-            this.hash.set(val, new_value);
 
-            this.test.set(val, this.counter);
-            this.counter += 1;
+        push(val: number): void {
+            const new_value = (this.stack.get(val) || 0) + 1;
+
+            this.stack.set(val, new_value);
+            this.priority_queue.push(val);
         }
     
         pop(): number {
             let max = -1;
-            let max_number = 0;
+            const max_value = new Set<number>();
 
-            this.hash.forEach((key, item) => {
+            this.stack.forEach((key, value) => {
+
                 if (key > max) {
                     max = key;
-                    max_number = item;
+                    max_value.clear();
+                    max_value.add(value)
                 }
+                if (key === max) {
+                    max_value.add(value);
+                }
+
             })
+            const result = this.get_priority_value(max_value)
+            this.stack.set(result, max - 1);
 
-            this.hash.set(max_number, max - 1);
+            return result;
+        }
 
-            return max_number
+        private get_priority_value(max_value: Set<number>): number {
+            const index = this.priority_queue.findLastIndex(item => max_value.has(item))
+            
+            const [value] = this.priority_queue.splice(index, 1);
+
+            return index;
         }
     }
-
+    
     const test = new FreqStack();
-
+    console.time('s');
     test.push(5)
     test.push(6)
     test.push(5)
-    test.push(3)
+    test.push(5)
+    test.push(5)
     test.push(6)
     console.log(test.pop())
     console.log(test)
+    console.timeEnd('s')
 }
