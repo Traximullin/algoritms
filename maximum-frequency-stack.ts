@@ -1,4 +1,28 @@
 {
+    class PriorityQueue {
+        queue: any;
+
+        constructor() {
+            this.queue  = [];
+        }
+
+        add(element: any, priority: any) {
+            const new_element = {element, priority};
+
+            let isAdd = false;
+            for (let i = 0; i < this.queue.length; i++) {
+                if (this.queue[i].priority > new_element.priority) {
+                    this.queue.splice(i, 0, new_element);
+                    isAdd = true;
+                    break;
+                }
+            }
+
+            if (!isAdd) {
+                this.queue.push(new_element);
+            }
+        }
+    }
     class FreqStack {
         stack = new Map();
         // приоритетная очередь
@@ -57,4 +81,12 @@
     console.log(test.pop())
     console.log(test)
     console.timeEnd('s')
+
+    const test_2 = new PriorityQueue();
+
+    test_2.add(2,1);
+    test_2.add(4,1);
+    test_2.add(4,1);
+    test_2.add(4,1);
+    console.log(test_2)
 }
