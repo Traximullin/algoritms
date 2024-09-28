@@ -1,25 +1,35 @@
 {
     class SeatManager {
-        room: number[];
         bookings: number[];
 
         constructor(n: number) {
-            this.room = Array.from({ length: n }, (_, i) => i + 1);
-            this.bookings = new Array(n).fill(0)
+            this.bookings = Array.from({ length: n }, (_, i) => i + 1);
         }
-    
+
         reserve(): number {
-            const free_booking = this.bookings.findIndex((room) => room == 0);
-
-            this.bookings[free_booking] = 1;
-
-            return this.room[free_booking];
+            return this.bookings.shift() as number;
         }
     
         unreserve(seatNumber: number): void {
-            this.bookings[seatNumber - 1] = 0;
+            const findIndex = this.bookings.find((item) => item > seatNumber);
+        
+            if (findIndex === -1) {
+                this.bookings.push(seatNumber);
+            } else {
+                this.bookings.splice(findIndex as number, 0, seatNumber);
+            }
+
         }
+
     }
 
     const seatManager = new SeatManager(5);
+    console.log(seatManager.reserve())
+    console.log(seatManager.reserve())
+    console.log(seatManager.reserve())
+    console.log(seatManager)
+    console.log(seatManager.unreserve(1))
+    console.log(seatManager.reserve())
+    console.log(seatManager.reserve())
+    console.log(seatManager.reserve())
 }
