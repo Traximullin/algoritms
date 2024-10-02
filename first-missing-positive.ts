@@ -1,21 +1,19 @@
 {
     function firstMissingPositive(nums: number[]): number {
-        const length = nums.length + 1;
+        const length = nums.length;
+        const dp = Array(length + 1).fill(0);
 
-        const set = new Set(nums);
-
-        let i = 1;
-
-        while (i < length) {
-
-            if (!set.has(i))
+        for (let i = 0; i < length; i++)
+            if (nums[i] > 0 && nums[i] <= length) 
+                dp[nums[i]] = 1;
+    
+        
+        for (let i = 1; i <= length; i++) 
+            if (dp[i] === 0) 
                 return i;
 
-            i++; 
-        }
-
-        return length;
+        return length + 1;
     };
 
-    console.log(firstMissingPositive([1]))
+    console.log(firstMissingPositive([1,2,4,3]))
 }
