@@ -1,49 +1,55 @@
 {
 
-    function helper(word: string, hash: Map<string, number>) {
-        let c = 0;
-
-        for (const char of word) {
-            if (hash.get(char)) {
-                c+= 1;
-            }
-        }
-
-        return c
+    function helper(char: string) {
+        return char.toLowerCase() !== char.toUpperCase();
     }
 
     function shortestCompletingWord(licensePlate: string, words: string[]): string {
-        const word_attrib = {
-            min: Infinity,
-            all: 0,
-            word: ''
-        };
+        let r = '';
+        words.sort((a,b) => a.length - b.length)
 
-        const hash = new Map();
+        let max_c = -1;
+
+        let min = Number.MAX_VALUE;
+
+        const map = new Map();
 
         for (let i = 0; i < licensePlate.length; i++) {
-            if (licensePlate[i].toLocaleLowerCase() !== licensePlate[i].toUpperCase()) {
-                const value = (hash.get(licensePlate[i].toLowerCase()) || 0)  + 1;
+            if (helper(licensePlate[i])) {
+                const char_lower_case = licensePlate[i].toLowerCase();
 
-                hash.set(licensePlate[i].toLowerCase(), value)
+                const new_value = (map.get(char_lower_case) || 0) + 1;
+
+                map.set(char_lower_case, new_value);
             }
         }
 
         for (const word of words) {
-            const all = helper(word, hash)
+            let c = 0;
 
-            if (word_attrib.all <= all) {
-
-                word_attrib.all = all
-                word_attrib.word = word;
+            const copy_map = new Map(map);
+            
+            for (const char of word) {
+                const value = copy_map.get(char);
+                
+                if (value) {
+                    copy_map.set(char, value - 1);
+                    c++;
+                }
 
             }
-            
+
+            if (min > word.length || max_c < c) {
+                max_c = c;
+                min = word.length;
+                r = word;
+            }
+           
         }
 
-        console.log(hash)
-        return word_attrib.word
+        return r;
     };
 
-    console.log(shortestCompletingWord("1с3 PSt", ["step","steps","stripe","stepple"]))
+    console.log(shortestCompletingWord("TE73696", ["ten","two","better","talk","suddenly","stand","protect","collection","about","southern"]))
+    console.log(shortestCompletingWord('1s3 456', ["looks","pest"]))
 }

@@ -1,4 +1,5 @@
 {
+    // todo rust
     function swapCharsByIndices(str: string, arr: number[]) {
         const charArray = str.split('');
       
