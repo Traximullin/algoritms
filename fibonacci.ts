@@ -1,5 +1,21 @@
-const fibonacci = (num: number) => {
-    return num <= 1 ? num : fibonacci(num - 1) + fibonacci(num - 2)
+const fibonacci = (n: number) => {
+    if (n === 0)
+        return 0
+
+    if (n === 1)
+        return 1;
+
+    let prev = 0,
+        curr = 1;
+    
+
+    for (let i = 2; i <= n; i++) {
+        const next = prev + curr;
+        prev = curr;
+        curr = next;
+    }
+
+    return curr;
 }
 
 console.log(fibonacci(11))

@@ -13,5 +13,4 @@
         return result
     };
 
-    console.log(getRow(3))
 }
