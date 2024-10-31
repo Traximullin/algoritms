@@ -1,29 +1,32 @@
 {
-    function canBeIncreasing(nums: number[]): boolean {
-        let c = 0;
-        let prevValue = nums[0];
-
-        for (let i = 0; i < nums.length - 1; i++) {
-            if (nums[i] >= nums[i + 1]) {
-                c += 1;
-                if(prevValue <= nums[i + 2]) {
-                    nums.splice(i, 1);
-                } else {
-                    nums.splice(i + 1, 1);
-                }
-
-                prevValue = nums[0]
-                i = -1;
-            } else {
-                prevValue = nums[i]
-            }
-
-            if (c == 2)
+    const helper = (nums: number[]) => {
+        for (let i = 1; i < nums.length; i++) {
+            if (nums[i - 1] >= nums[i])
                 return false
 
         }
 
         return true;
+    }
+
+    function canBeIncreasing(nums: number[]): boolean {
+        for (let i = 1; i < nums.length; i++) {
+            if (nums[i - 1] >= nums[i]) {
+                const sliced = [...nums]
+                sliced.splice(i - 1, 1);
+                
+                if (helper(sliced))
+                    return true
+                else {
+                    const sliced = [...nums]
+                    sliced.splice(i, 1);
+
+                    return helper(sliced);
+                }
+            }
+        }
+
+        return true
     };
 
     console.log(canBeIncreasing([100,21,100]))
