@@ -1,26 +1,24 @@
 {
     function isLongPressedName(name: string, typed: string): boolean {
-        const hash = new Map();
+        const uniqueName = [...new Set(name)].join('');
+        const uniqueTyped = [...new Set(typed)].join('');
 
-        for(let char of typed) {
-            const value = (hash.get(char) || 0) + 1
+        if (uniqueName !== uniqueTyped)
+            return false
 
-            hash.set(char, value)
+        const dp = new Array(26).fill(0);
+
+        for (const char of typed) {
+            dp[char.charCodeAt(0) - 97] += 1;
         }
 
-        for(let char of name) {
-            const value = (hash.get(char) || 0) - 1
-
-            if(value < 0) {
-                return false
-            }
-
-            hash.set(char, value)
+        for (const char of name) {
+            dp[char.charCodeAt(0) - 97] -= 1;
         }
 
-        return true
+        console.log(dp)
+        return dp.every(item => item >= 0)
     };
 
-    console.log(isLongPressedName('saeed', 'ssaaedd'))
-    console.log(isLongPressedName('alex', 'aaleex'))
+    console.log(isLongPressedName('alex', 'aaleexa'))
 }
