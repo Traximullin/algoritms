@@ -22,13 +22,15 @@
 
     function wordCount(startWords: string[], targetWords: string[]): number {
         let c = 0;
+        const cache = new Set();
 
         for (const word of startWords) {
 
             for (const target of targetWords) {
-                if(helper(word, target) == 1) {
+                if(helper(word, target) == 1 && !cache.has(target)) {
                     c += 1;
 
+                    cache.add(cache)
                     break;
                 };
             }
