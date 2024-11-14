@@ -1,22 +1,32 @@
 {
     // todo https://leetcode.com/problems/count-words-obtained-after-adding-a-letter
     
-    function helper(str1: string, str2: string): number {
-        if (str1.length === str2.length) {
-            return 0;
+    function helper(str1: string, str2: string): boolean {
+        if (str2.length !== str1.length + 1) {
+            return false;
         }
-
-        let diffCount = 0;
     
-        for (let i = 0; i < str1.length; i++) {
-            if (!str2.includes(str1[i])) {
+        const sortedStr1 = str1.split('').sort();
+        const sortedStr2 = str2.split('').sort();
+    
+        let diffCount = 0;
+        let i = 0, j = 0;
+    
+        while (i < sortedStr1.length && j < sortedStr2.length) {
+            if (sortedStr1[i] === sortedStr2[j]) {
+                i++;
+                j++;
+            } else {
                 diffCount++;
+                j++; 
+            }
+
+            if (diffCount > 1) {
+                return false;
             }
         }
     
-        diffCount += Math.abs(str1.length - str2.length);
-    
-        return diffCount - 1;
+        return diffCount === 1 || j === sortedStr2.length - 1;
     }
     
 
@@ -27,12 +37,10 @@
         for (const word of startWords) {
 
             for (const target of targetWords) {
-                if(helper(word, target) == 1 && !cache.has(target)) {
+                if (helper(word, target) && !cache.has(target)) {
                     c += 1;
-
-                    cache.add(cache)
-                    break;
-                };
+                    cache.add(target)
+                }
             }
             
         }
@@ -41,5 +49,5 @@
     };
 
     console.log(wordCount(["ant","act","tack"], ["tack","act","acti"]))
-    console.log(wordCount(["ab","a"], ["abc","abcd"] ))
+    console.log(wordCount(["ab","a"],["abc","abcd"]))
 }
