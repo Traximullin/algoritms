@@ -1,4 +1,3 @@
-// todo
 class Bank {
     balance: number[];
 
