@@ -2,7 +2,7 @@
     function findScore(nums: number[]): number {
         let c = 0; 
         const set = new Set();
-        
+
         const index_sorting = Array.from(nums.keys()).sort((a,b) => nums[a] - nums[b]);
 
         for (const index of index_sorting) {
