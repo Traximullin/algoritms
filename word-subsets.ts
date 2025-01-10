@@ -1,26 +1,25 @@
 {
-    // TODO https://leetcode.com/problems/word-subsets
     function wordSubsets(words1: string[], words2: string[]): string[] {
         const r: string[] = [];
-        const chars = words2.join("").split("")
+        
+        for (const words of words1) {
+            let i = 0;
 
-        main: for (let word of words1) {
-            let replaced_word = word;
-            for (const char of chars) {
-                if (!replaced_word.includes(char)) {
-                    continue main;
-                } else {
-                    replaced_word = replaced_word.replace(char, "")
-                }
+            for (const char of words) {
+                if (i === words2.length)
+                    break;
+
+                if (char == words2[i]) 
+                    i += 1;
             }
 
-            r.push(word)
+            if (i === words2.length) 
+                r.push(words);
         }
 
         return r;
-    
     };
 
 
-    console.log(wordSubsets(["leetcode"],["e","oo"]))
+    console.log(wordSubsets(["amazon","apple","facebook","google","leetcode"],["l","e"]))
 }
