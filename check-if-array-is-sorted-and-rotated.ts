@@ -1,24 +1,21 @@
 {
     function check(nums: number[]): boolean {
-        const min_index = nums.lastIndexOf(Math.min(...nums));
-        
-        let i = min_index;
+        let c = 0;
 
-        while (i !== nums.length - 1) {
-            const key = i % nums.length;
+        if (nums[0] < nums.at(-1))
+            c += 1;
 
-            const isBig = !(nums[key] <= nums[(key + 1) % nums.length]);
-
-            if (isBig) {
-                return false
-            } 
-            i++;
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > nums[i + 1]) {
+                c += 1;
+                if (c > 1) 
+                    return false;
+            }
         }
 
         return true;
     };
     
-    console.log(check([1,2,3]))
-    console.log(check([1,1,1]))
+    console.log(check([3,4,5,1,2]))
     
 }
