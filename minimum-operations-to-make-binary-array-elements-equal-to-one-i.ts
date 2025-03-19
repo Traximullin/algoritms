@@ -25,6 +25,7 @@
     };
     
     console.log(minOperations([0,1,1,1]))
+    console.log(minOperations([0,1,1,1]))
 
 
 }
