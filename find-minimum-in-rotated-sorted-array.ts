@@ -1,27 +1,24 @@
 {
-    // todo
     function findMin(nums: number[]): number {
-        if (nums.length < 2) {
-            return nums[0];
+        let left = 0,
+            right = nums.length - 1;
+
+        if (nums[left] < nums[right])
+            return nums[left];
+
+        while (left < right) {
+            const mid = ~~((left + right) / 2);
+
+            if (nums[mid] > nums[right]) 
+                left = mid + 1;
+            else 
+                right = mid;
         }
 
-        const mid = ~~(nums.length / 2);
-
-        let min = nums[mid];
-        console.log(mid)
-        if (nums[0] > nums[mid]) {
-            for (let i = mid; i < nums.length; i++) {
-                min = Math.min(nums[i], min)
-            }
-        } else {
-            for (let i = 0; i < mid; i++) {
-                min = Math.min(nums[i], min)
-            }
-        }
-
-        return min
+        return nums[left];
     };
 
     console.log(findMin([3,4,5,1,2]));
+    // console.log(findMin([4,5,6,7,0,1,2]))
     // console.log(findMin([11,13,15,17]))
 }
