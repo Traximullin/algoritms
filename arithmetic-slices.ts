@@ -4,7 +4,7 @@
 
         if (nums.length < 3) 
             return c;
-
+        
         let left = 0;
         let diff = nums[1] - nums[0];
 
