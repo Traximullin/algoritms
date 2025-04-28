@@ -11,14 +11,16 @@
     }
 
     function letterCombinations(digits: string): string[] {
-        const result = Array(keyboards[digits[0]].length).fill('');
+        const result: string[] = [];
+        const current = digits[0];
 
-        for (const digit of digits) {
-            console.log(digit)
+        const current_key = keyboards[current];
 
-            for (const [index, key_one] of keyboards[digit].split('').entries()) {
-                result[index] += key_one;
-            }
+        for (let i = 0; i < current_key.length; i++) {
+            console.log(current_key[i])
+
+            
+
         }
 
         console.log(result)
