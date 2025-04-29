@@ -12,9 +12,13 @@
 
 
     function countSubstrings(s: string): number {
+        let c = s.length;
+
         
-        return s.length
+
+
+        return c
     };
 
-    console.log(countSubstrings("abc"))
+    console.log(countSubstrings("aaa"))
 }
