@@ -1,25 +1,44 @@
 {
-    function wordSubsets(words1: string[], words2: string[]): string[] {
-        const r: string[] = [];
-        
-        for (const words of words1) {
-            let i = 0;
+    function helper(str: string, words: string[]) {
+        const arr = str.split('');
+        let test = 0;
 
-            for (const char of words) {
-                if (i === words2.length)
+        for (const chars of words) {
+            let c = 0;
+            const indexes = [];
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === chars[c]) {
+                    c += 1;
+                    indexes.push(i);
+                }
+                if (c === chars.length) {
+                    test += 1;
+                    indexes.forEach(item => {
+                        arr[item] = '#';
+                    })
                     break;
-
-                if (char == words2[i]) 
-                    i += 1;
+                }
             }
 
-            if (i === words2.length) 
-                r.push(words);
+        }
+
+        return test === words.length;
+    }
+
+
+    function wordSubsets(words1: string[], words2: string[]): string[] {
+        const r = [];
+
+        for (const word of words1) {
+            if(helper(word, words2)) {
+                r.push(word)
+            }
         }
 
         return r;
     };
 
 
-    console.log(wordSubsets(["amazon","apple","facebook","google","leetcode"],["l","e"]))
+    console.log(wordSubsets(["google"], ["lo", "eo"]))
 }
