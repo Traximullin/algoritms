@@ -1,5 +1,5 @@
 {
-    const findWordsContaining = function(words, x) {
+    function findWordsContaining(words: string[], x: string): number[] {
         const result: number[] = [];
 
         for(let i = 0; i < words.length; i++) {
