@@ -1,5 +1,5 @@
 {
-    function minimumRightShifts(nums: number[]): number {
+    function ow(nums: number[]): number {
         let c = 0;
         let p = nums.length;
 
