@@ -9,30 +9,23 @@
     }
 
     function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
-        let c = 0;
-
-        if(head == null || head.next == null && n == 1) 
-            return null
-
-        let temp = head
-
-        while (temp != null && temp.next !== null) {
-            temp = temp.next
-            c++
+        let current = head;
+        const arr = []
+        
+        while (current){
+                arr.push(current)
+                current = current?.next
         }
+        
+        arr.splice(arr.length - n, 1)
 
-        const search = c - n;
+        if(arr.length === 0){return null}
 
-        let copy = head;
-
-        for(let i = 0; i < search; i++) {
-            console.log(i)
-            copy = copy.next
+        for(let i = 0 ; i < arr.length; i++){
+            arr[i].next = arr[i + 1] ?? null
         }
-
-        return copy
-        console.log(search)
-
+        
+        return arr[0]
     };
 
     const test = new ListNode(
