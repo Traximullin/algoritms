@@ -1,17 +1,20 @@
 {
     function removeDuplicateLetters(s: string): string {
-        const set = new Set();
-
-        for (const char of s) {
-            if (set.has(char)) {
-                set.delete(char)
-                set.add(char)
-            } else {
-                set.add(char);
-            }
+        const stack = [];
+        
+        for (let i = 0; i < s.length; i++) {
+            const char = s[i];
+            
+            if (stack.indexOf(char) > -1) continue;
+            
+            while (stack.length > 0 
+                && stack[stack.length - 1] > char 
+                && s.indexOf(stack[stack.length - 1], i) > i) stack.pop();
+            
+            stack.push(char);
         }
-
-        return Array.from(set.values()).join("");
+        
+        return stack.join("");
     };
 
     console.log(removeDuplicateLetters("bcabc"))
