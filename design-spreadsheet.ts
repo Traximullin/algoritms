@@ -1,5 +1,5 @@
 {
-    class Spreadsheet {
+    class Speradsheet {
         private cellValues = new Map<string, number>();
 
         constructor(rows: number) {
