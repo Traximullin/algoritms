@@ -18,6 +18,6 @@
             }
         }
 
-        return operationCount;
+        return operationCount
     };
 }
