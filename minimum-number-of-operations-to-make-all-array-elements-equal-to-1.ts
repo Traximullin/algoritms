@@ -17,6 +17,7 @@
                 }
             }
         }
+        
         return isFinite(res) ? res + n - 1 : -1;
     }
 }
