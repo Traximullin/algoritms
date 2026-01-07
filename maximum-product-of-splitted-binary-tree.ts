@@ -26,3 +26,5 @@ const maxProduct = (root: TreeNode | null): number => {
     
     return maxProd % MOD;
 };
+
+console.log('!!')
