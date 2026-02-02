@@ -1,44 +1,34 @@
-{
-    function isValidSudoku(board: string[][]): boolean {
-        console.log('!')
-        for (let i = 0; i < 1; i++) {
-            console.log(board[i])
-            const set_x = new Set();
-            const set_y = new Set();
+function isValidSudoku(board: string[][]): boolean {
+  const seenRows = [...Array(9)].map(() => new Set<string>());
+  const seenCols = [...Array(9)].map(() => new Set<string>());
+  const seenBoxs = [...Array(9)].map(() => new Set<string>());
 
-            board[i].forEach(item => {
-                if (set_x.has(item))
-                    return false;
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      const item = board[r][c];
+      if (item === ".") continue;
+      const boxN = getBox(r, c);
 
-                if (item !== ".")
-                    set_x.add(item)
+      if (
+        seenRows[r].has(item) ||
+        seenCols[c].has(item) ||
+        seenBoxs[boxN].has(item)
+      ) {
+        return false;
+      }
 
-            })
+      seenRows[r].add(item);
+      seenCols[c].add(item);
+      seenBoxs[boxN].add(item);
+    }
+  }
 
-            for (let j = 0; j < 9; j++) {
-                const item = board[j][i];
+  return true;
+}
 
-                if (set_y.has(item))
-                    return false;
+function getBox(r: number, c: number): number {
+  const rowBoxIndex = Math.floor(r / 3);
+  const colBoxIndex = Math.floor(c / 3);
 
-                if (item !== ".")
-                    set_y.add(item)
-            }
-
-        }
-
-    };
-
-
-    console.log(isValidSudoku([
-        ["5","3",".",".","7",".",".",".","."],
-        ["6",".",".","1","9","5",".",".","."],
-        [".","9","8",".",".",".",".","6","."],
-        ["8",".",".",".","6",".",".",".","3"],
-        ["4",".",".","8",".","3",".",".","1"],
-        ["7",".",".",".","2",".",".",".","6"],
-        [".","6",".",".",".",".","2","8","."],
-        [".",".",".","4","1","9",".",".","5"],
-        [".",".",".",".","8",".",".","7","9"]
-    ]));
+  return rowBoxIndex * 3 + colBoxIndex;
 }
