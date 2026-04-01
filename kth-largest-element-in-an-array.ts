@@ -1,19 +1,21 @@
-{
-    function findKthLargest(nums: number[], k: number): number {
-        let max = -1;
-        const arr = [];
+function findKthLargest(nums: number[], k: number): number {
+  const hash = new Map();
 
-        for (let i = 0; i < nums.length; i++) {
-            if (nums[i] > max) {
-                max = nums[i];
-                arr.push(nums[i]);
-            } else {
-                arr.unshift(nums[i]);
-            }
-        }
+  for (const num of nums) {
+    hash.set(num, (hash.get(num) || 0) + 1);
+  }
 
-        console.log(arr)
-    };
+  const minNum = Math.min(...nums);
+  const maxNum = Math.max(...nums);
 
-    console.log(findKthLargest([3,2,1,5,6,4], 2))
+  let count = 0;
+
+  for (let num = maxNum; num >= minNum; num--) {
+    if (hash.has(num)) {
+      count += hash.get(num);
+      if (count >= k) return num;
+    }
+  }
+
+  return -1;
 }
