@@ -14,7 +14,7 @@ fn dfs(open_count: i32, close_count: i32, path: &mut String, res: &mut Vec<Strin
     }
 
     if open_count < n {
-        path.push('(');
+        path.push('(');https://leetcode.com/problems/generate-parentheses/
         Self::dfs(open_count + 1, close_count, path, res, n);
         path.pop();
     }
