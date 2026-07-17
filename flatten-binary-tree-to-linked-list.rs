@@ -19,3 +19,5 @@ pub fn flatten(root: &mut Option<Rc<RefCell<TreeNode>>>) {
         head = node;
     }
 }
+
+println!("");
