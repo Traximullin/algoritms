@@ -20,3 +20,5 @@ function minimumDeletions(nums: number[]): number {
         Math.max(min, max) + 1
     );
 };
+
+console.log("123")
