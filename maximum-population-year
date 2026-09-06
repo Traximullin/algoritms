@@ -1,0 +1,19 @@
+function maximumPopulation(logs: number[][]): number {
+    let maxPop = 0;
+    let maxYear = logs[0][0];
+    logs.sort((a, b) => a[0] - b[0]);
+
+    logs.forEach((logTest) => {
+        let currPop = 0;
+        logs.forEach((log) => {
+            if (log[0] <= logTest[0] && logTest[0] < log[1]) currPop++;
+        });
+
+        if (currPop > maxPop) {
+            maxPop = currPop;
+            maxYear = logTest[0];
+        }
+    });
+
+    return maxYear;
+};
