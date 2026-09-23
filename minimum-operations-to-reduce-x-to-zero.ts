@@ -32,3 +32,5 @@ function minOperations(nums: number[], x: number): number {
         ? -1
         : nums.length - maxLength;
 }
+
+console.log("123")
