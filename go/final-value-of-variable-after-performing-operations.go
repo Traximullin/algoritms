@@ -11,3 +11,5 @@ func finalValueAfterOperations(operations []string) int {
 
 	return c
 }
+
+// refactor
