@@ -1,13 +1,13 @@
 func finalValueAfterOperations(operations []string) int {
-	count := 0
+	c := 0
 
-	for _, operation := range operations {
-		if operation[1] == '-' {
-			count--
+	for _, o := range operations {
+		if strings.Contains(o, "+") {
+			c++
 		} else {
-			count++
+			c--
 		}
 	}
 
-	return count
+	return c
 }
